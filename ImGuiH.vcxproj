@@ -24,6 +24,16 @@
     <None Include="vcpkg_scripts\Install.ps1" />
     <None Include="vcpkg_scripts\Remove.ps1" />
   </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="integration\imgui_impl_glfw.cpp" />
+    <ClCompile Include="integration\imgui_impl_opengl3.cpp" />
+    <ClCompile Include="src\ImGuiH.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="inc\SSS\ImGuiH.hpp" />
+    <ClInclude Include="integration\imgui_impl_glfw.h" />
+    <ClInclude Include="integration\imgui_impl_opengl3.h" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <ProjectGuid>{BB4BA2CA-32FE-4E5C-8830-112AFD36FA41}</ProjectGuid>
@@ -80,25 +90,25 @@
     <LinkIncremental>true</LinkIncremental>
     <IntDir>.\obj\$(Configuration)\</IntDir>
     <OutDir>$(Configuration)\</OutDir>
-    <TargetName>sss-imgui</TargetName>
+    <TargetName>sss-imguih</TargetName>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
     <IntDir>.\obj\$(Platform)\$(Configuration)\</IntDir>
     <OutDir>$(Platform)\$(Configuration)\</OutDir>
-    <TargetName>sss-imgui</TargetName>
+    <TargetName>sss-imguih</TargetName>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
     <IntDir>.\obj\$(Configuration)\</IntDir>
     <OutDir>$(Configuration)\</OutDir>
-    <TargetName>sss-imgui</TargetName>
+    <TargetName>sss-imguih</TargetName>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
     <IntDir>.\obj\$(Platform)\$(Configuration)\</IntDir>
     <OutDir>$(Platform)\$(Configuration)\</OutDir>
-    <TargetName>sss-imgui</TargetName>
+    <TargetName>sss-imguih</TargetName>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -106,7 +116,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;_DEBUG;DEBUG_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>.\inc</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>.\inc; .\integration</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp17</LanguageStandard>
       <ProgramDataBaseFileName>$(Outdir)$(TargetName).pdb</ProgramDataBaseFileName>
     </ClCompile>
@@ -122,7 +132,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;DEBUG_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>.\inc</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>.\inc; .\integration</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp17</LanguageStandard>
       <ProgramDataBaseFileName>$(Outdir)$(TargetName).pdb</ProgramDataBaseFileName>
     </ClCompile>
@@ -140,7 +150,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;NDEBUG;DEBUG_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>.\inc</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>.\inc; .\integration</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp17</LanguageStandard>
       <ProgramDataBaseFileName>$(Outdir)$(TargetName).pdb</ProgramDataBaseFileName>
     </ClCompile>
@@ -160,7 +170,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;DEBUG_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>.\inc</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>.\inc; .\integration</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp17</LanguageStandard>
       <ProgramDataBaseFileName>$(Outdir)$(TargetName).pdb</ProgramDataBaseFileName>
     </ClCompile>

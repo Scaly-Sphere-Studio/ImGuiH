@@ -12,6 +12,9 @@
     <Filter Include="vcpkg_scripts">
       <UniqueIdentifier>{2e9304bf-d336-4a17-b008-b6aeacc0770b}</UniqueIdentifier>
     </Filter>
+    <Filter Include="integration">
+      <UniqueIdentifier>{0033a68e-1847-41f5-a24c-e828b05e7d6d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="InstallScripts.ps1" />
@@ -22,5 +25,27 @@
     <None Include="vcpkg_scripts\Remove.ps1">
       <Filter>vcpkg_scripts</Filter>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="src\ImGuiH.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="integration\imgui_impl_glfw.cpp">
+      <Filter>integration</Filter>
+    </ClCompile>
+    <ClCompile Include="integration\imgui_impl_opengl3.cpp">
+      <Filter>integration</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="integration\imgui_impl_glfw.h">
+      <Filter>integration</Filter>
+    </ClInclude>
+    <ClInclude Include="integration\imgui_impl_opengl3.h">
+      <Filter>integration</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\SSS\ImGuiH.hpp">
+      <Filter>inc</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
