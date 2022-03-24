@@ -30,6 +30,7 @@
     <ClCompile Include="src\ImGuiH.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="inc\SSS\ImGuiH\imfilebrowser.h" />
     <ClInclude Include="inc\SSS\ImGuiH.hpp" />
     <ClInclude Include="integration\imgui_impl_glfw.h" />
     <ClInclude Include="integration\imgui_impl_opengl3.h" />

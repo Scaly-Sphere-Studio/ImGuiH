@@ -4,11 +4,25 @@
 
 __SSS_IMGUIH_BEGIN
 
+ImGui::FileBrowser FileBrowser;
+
 void init()
 {
     IMGUI_CHECKVERSION();
     ImGui::CreateContext();
     ImGui::GetIO().IniFilename = nullptr;
+
+    // Init filebrowser
+    FileBrowser = []() {
+        ImGui::FileBrowser filebrowser;
+        // Remove last '\' from PWD because for some reason
+        // the file browser detects it as an empty directory
+        std::string pwd = SSS::PWD;
+        pwd.resize(pwd.size() - 1);
+        filebrowser.SetPwd(pwd);
+        filebrowser.SetTitle("Select a file");
+        return filebrowser;
+    }();
 }
 
 void setContext(GLFWwindow* context, const char* glsl_version)
