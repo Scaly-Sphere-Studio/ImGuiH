@@ -25,6 +25,7 @@
     <None Include="vcpkg_scripts\Remove.ps1">
       <Filter>vcpkg_scripts</Filter>
     </None>
+    <None Include="Doxyfile" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\ImGuiH.cpp">

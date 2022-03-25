@@ -2,9 +2,9 @@
 #include "imgui_impl_glfw.h"
 #include "imgui_impl_opengl3.h"
 
-__SSS_IMGUIH_BEGIN
+__SSS_IMGUIH_BEGIN;
 
-ImGui::FileBrowser FileBrowser;
+ImGui::FileBrowser filebrowser;
 
 void init()
 {
@@ -13,16 +13,13 @@ void init()
     ImGui::GetIO().IniFilename = nullptr;
 
     // Init filebrowser
-    FileBrowser = []() {
-        ImGui::FileBrowser filebrowser;
-        // Remove last '\' from PWD because for some reason
-        // the file browser detects it as an empty directory
-        std::string pwd = SSS::PWD;
-        pwd.resize(pwd.size() - 1);
-        filebrowser.SetPwd(pwd);
-        filebrowser.SetTitle("Select a file");
-        return filebrowser;
-    }();
+    filebrowser = ImGui::FileBrowser();
+    // Remove last '\' from PWD because for some reason
+    // the file browser detects it as an empty directory
+    std::string pwd = SSS::PWD;
+    pwd.resize(pwd.size() - 1);
+    filebrowser.SetPwd(pwd);
+    filebrowser.SetTitle("Select a file");
 }
 
 void setContext(GLFWwindow* context, const char* glsl_version)
@@ -53,4 +50,4 @@ void shutdown()
     ImGui::DestroyContext();
 }
 
-__SSS_IMGUIH_END
+__SSS_IMGUIH_END;

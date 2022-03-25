@@ -2,6 +2,7 @@ Release/
 Debug/
 .vs/
 *.vcxproj.user
+doxygen/
 
 # Prerequisites
 *.d
