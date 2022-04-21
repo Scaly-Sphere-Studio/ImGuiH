@@ -4,77 +4,77 @@
 #include <imgui.h>
 #include "ImGuiH/imfilebrowser.h"
 
-/*! \file
- *  @brief The header of the
+/** @file
+ *  Header of the
  *  [SSS/ImGuiH](https://github.com/Scaly-Sphere-Studio/ImGuiH) library.
  */
 
-#define __SSS_IMGUIH_BEGIN __SSS_BEGIN namespace ImGuiH {
-#define __SSS_IMGUIH_END __SSS_END }
-
-/*! \namespace ImGuiH
- *  @brief This namespaces holds all of
- *  [SSS/ImGuiH](https://github.com/Scaly-Sphere-Studio/ImGuiH) library.
- * 
- *  It is nested inside the \c SSS namespace. Members of this namespace
- *  shall be accessed via the \c SSS::ImGuiH formula
+/** @namespace SSS::ImGuiH
+ *  A simple handle to \b ImGui integration & extension(s).
  */
+
+/** Declares the SSS::ImGuiH namespace.
+ *  Further code will be nested in the SSS::ImGuiH namespace.\n
+ *  Should be used in pair with with #__SSS_IMGUIH_END.
+ */
+#define __SSS_IMGUIH_BEGIN __SSS_BEGIN; namespace ImGuiH {
+/** Closes the SSS::ImGuiH namespace declaration.
+ *  Further code will no longer be nested in the SSS::ImGuiH namespace.\n
+ *  Should be used in pair with with #__SSS_IMGUIH_BEGIN.
+ */
+#define __SSS_IMGUIH_END __SSS_END; }
 
 struct GLFWwindow; // pre-declaration
 
 __SSS_IMGUIH_BEGIN;
 
-/*! @brief Creates an \a ImGui context and inits the #filebrowser variable.
- *  
+/** Creates an \b ImGui context and inits the #filebrowser variable.
  *  \a ImGui's .ini file option is disabled.\n
- *  The #filebrowser's pwd is set to the executable's folder.
- * 
+ *  The #filebrowser's pwd is set to SSS::PWD.
  *  @usage
- *  Should be called after \a OpenGL initialisation, and followed
- *  by #setContext.
+ *  Should be called after \b OpenGL initialisation, and followed
+ *  by setContext().\n
+ *  Must be used in pair with shutdown().
  */
 void init();
 
-/*! @brief Links \a ImGui to a specific \a OpenGL context.
- *
+/** Links \b ImGui to a specific \b OpenGL context for future draw calls.
  *  @param[in] context The \a OpenGL context to be linked to.
- *  @param[in] glsl_version  The \a GLSL shader version.
- * 
+ *  @param[in] glsl_version  The \a GLSL shader version to be used.
  *  @usage
- *  Should be called after #init, and anytime further if the user
- *  decides to change the \a OpenGL target.
+ *  Should be called after init(), and anytime the user wants
+ *  to change the \b OpenGL target.
  */
 void setContext(GLFWwindow* context, const char* glsl_version = "#version 330");
 
-/*! @brief Starts a new \a ImGui frame.
- *
- *  \a ImGui will draw future operations in a clean buffer that's
- *  available until the next #render call.
- * 
+/** Starts a new \b ImGui frame.
+ *  Future \b ImGui operations will be drawn in a clean buffer that's
+ *  available until the next render() call.
  *  @usage
- *  Should be called before any \a ImGui draw operation.
+ *  Should be called before any \b ImGui draw operation, and after
+ *  a context has been set with setContext().\n
+ *  Must be used in pair with render().
  */
 void newFrame();
 
-/*! @brief Ends the \a ImGui frame and renders it to the linked \a OpenGL
- *  context.
- *
+/** Ends the \b ImGui frame and renders it to the linked \b OpenGL context.
  *  @usage
- *  Should be called after \a ImGui draw operations have been completed.
+ *  Should be called after \b ImGui draw operations have been completed.\n
+ *  Must be used in pair with newFrame().
  */
 void render();
 
-/*! @brief Destroys the \a ImGui context and cleans up everything.
- *
+/** Destroys the \b ImGui context and cleans up everything.
  *  @usage
- *  Should be called before any program exit, or when \a ImGui is no longer needed.
+ *  Should be called before any program exit, or when \b ImGui
+ *  is no longer needed.\n
+ *  Must be used in pair with init().
  */
 void shutdown();
 
-/*! @brief A pre-set instance of \a ImGui's file browser
+/** A pre-set instance of \b ImGui's file browser
  *  [extension](https://github.com/AirGuanZ/imgui-filebrowser).
- * 
- *  This instance is created in the #init function.
+ *  This instance is created in the init() function.
  */
 extern ImGui::FileBrowser filebrowser;
 
