@@ -2,7 +2,7 @@
 #include "imgui_impl_glfw.h"
 #include "imgui_impl_opengl3.h"
 
-__SSS_IMGUIH_BEGIN;
+SSS_IMGUIH_BEGIN;
 
 ImGui::FileBrowser filebrowser;
 
@@ -50,4 +50,4 @@ void shutdown()
     ImGui::DestroyContext();
 }
 
-__SSS_IMGUIH_END;
+SSS_IMGUIH_END;

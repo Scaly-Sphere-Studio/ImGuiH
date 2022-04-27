@@ -15,18 +15,18 @@
 
 /** Declares the SSS::ImGuiH namespace.
  *  Further code will be nested in the SSS::ImGuiH namespace.\n
- *  Should be used in pair with with #__SSS_IMGUIH_END.
+ *  Should be used in pair with with #SSS_IMGUIH_END.
  */
-#define __SSS_IMGUIH_BEGIN __SSS_BEGIN; namespace ImGuiH {
+#define SSS_IMGUIH_BEGIN SSS_BEGIN; namespace ImGuiH {
 /** Closes the SSS::ImGuiH namespace declaration.
  *  Further code will no longer be nested in the SSS::ImGuiH namespace.\n
- *  Should be used in pair with with #__SSS_IMGUIH_BEGIN.
+ *  Should be used in pair with with #SSS_IMGUIH_BEGIN.
  */
-#define __SSS_IMGUIH_END __SSS_END; }
+#define SSS_IMGUIH_END SSS_END; }
 
 struct GLFWwindow; // pre-declaration
 
-__SSS_IMGUIH_BEGIN;
+SSS_IMGUIH_BEGIN;
 
 /** Creates an \b ImGui context and inits the #filebrowser variable.
  *  \a ImGui's .ini file option is disabled.\n
@@ -78,4 +78,4 @@ void shutdown();
  */
 extern ImGui::FileBrowser filebrowser;
 
-__SSS_IMGUIH_END;
+SSS_IMGUIH_END;
