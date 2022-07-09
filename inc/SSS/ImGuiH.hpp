@@ -28,22 +28,13 @@ struct GLFWwindow; // pre-declaration
 
 SSS_IMGUIH_BEGIN;
 
-/** Creates an \b ImGui context and inits the #filebrowser variable.
- *  \a ImGui's .ini file option is disabled.\n
- *  The #filebrowser's pwd is set to SSS::PWD.
- *  @usage
- *  Should be called after \b OpenGL initialisation, and followed
- *  by setContext().\n
- *  Must be used in pair with shutdown().
- */
-void init();
-
 /** Links \b ImGui to a specific \b OpenGL context for future draw calls.
+ *  Also inits ImGui.
  *  @param[in] context The \a OpenGL context to be linked to.
  *  @param[in] glsl_version  The \a GLSL shader version to be used.
  *  @usage
- *  Should be called after init(), and anytime the user wants
- *  to change the \b OpenGL target.
+ *  Should be called anytime the user wants to change the
+ *  \b OpenGL target.
  */
 void setContext(GLFWwindow* context, const char* glsl_version = "#version 330");
 
@@ -55,7 +46,7 @@ void setContext(GLFWwindow* context, const char* glsl_version = "#version 330");
  *  a context has been set with setContext().\n
  *  Must be used in pair with render().
  */
-void newFrame();
+bool newFrame();
 
 /** Ends the \b ImGui frame and renders it to the linked \b OpenGL context.
  *  @usage
@@ -64,18 +55,10 @@ void newFrame();
  */
 void render();
 
-/** Destroys the \b ImGui context and cleans up everything.
- *  @usage
- *  Should be called before any program exit, or when \b ImGui
- *  is no longer needed.\n
- *  Must be used in pair with init().
- */
-void shutdown();
-
-/** A pre-set instance of \b ImGui's file browser
+/** Returns a pre-set instance of \b ImGui's file browser
  *  [extension](https://github.com/AirGuanZ/imgui-filebrowser).
- *  This instance is created in the init() function.
+ *  This instance is created after the first call to setContext().
  */
-extern ImGui::FileBrowser filebrowser;
+ImGui::FileBrowser& getFilebrowser();
 
 SSS_IMGUIH_END;

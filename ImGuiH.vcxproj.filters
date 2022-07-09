@@ -37,6 +37,9 @@
     <ClCompile Include="integration\imgui_impl_opengl3.cpp">
       <Filter>integration</Filter>
     </ClCompile>
+    <ClCompile Include="src\DemoMain.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="integration\imgui_impl_glfw.h">
