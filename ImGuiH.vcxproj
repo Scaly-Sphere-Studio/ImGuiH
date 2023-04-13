@@ -36,15 +36,13 @@
   <ItemGroup>
     <ClCompile Include="integration\imgui_impl_glfw.cpp" />
     <ClCompile Include="integration\imgui_impl_opengl3.cpp" />
-    <ClCompile Include="src\DemoMain.cpp">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Demo|Win32'">false</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Demo|x64'">false</ExcludedFromBuild>
-    </ClCompile>
     <ClCompile Include="src\ImGuiH.cpp" />
+    <ClCompile Include="src\opengl.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)'!='Demo'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="src\DemoMain.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)'!='Demo'">true</ExcludedFromBuild>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="inc\SSS\ImGuiH\imfilebrowser.h" />
@@ -175,6 +173,7 @@
       <AdditionalIncludeDirectories>.\inc; .\integration</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp17</LanguageStandard>
       <ProgramDataBaseFileName>$(Outdir)$(TargetName).pdb</ProgramDataBaseFileName>
+      <DebugInformationFormat>OldStyle</DebugInformationFormat>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -191,6 +190,7 @@
       <AdditionalIncludeDirectories>.\inc; .\integration</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp17</LanguageStandard>
       <ProgramDataBaseFileName>$(Outdir)$(TargetName).pdb</ProgramDataBaseFileName>
+      <DebugInformationFormat>OldStyle</DebugInformationFormat>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -209,6 +209,7 @@
       <AdditionalIncludeDirectories>.\inc; .\integration</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp17</LanguageStandard>
       <ProgramDataBaseFileName>$(Outdir)$(TargetName).pdb</ProgramDataBaseFileName>
+      <DebugInformationFormat>OldStyle</DebugInformationFormat>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -249,6 +250,7 @@
       <AdditionalIncludeDirectories>.\inc; .\integration</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp17</LanguageStandard>
       <ProgramDataBaseFileName>$(Outdir)$(TargetName).pdb</ProgramDataBaseFileName>
+      <DebugInformationFormat>OldStyle</DebugInformationFormat>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>

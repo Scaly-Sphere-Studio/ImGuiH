@@ -1,6 +1,8 @@
 #include "SSS/ImGuiH.hpp"
 #include "imgui_impl_glfw.h"
 #include "imgui_impl_opengl3.h"
+#define GLFW_DLL
+#include <glad/glad.h>
 #include <GLFW/glfw3.h>
 
 SSS_IMGUIH_BEGIN;
@@ -18,9 +20,9 @@ private:
     bool _has_frame{ false };
 
 public:
-    static void setContext(GLFWwindow* context, const char* glsl_version);
-    static void newFrame();
-    static void render();
+    void setContext(GLFWwindow* context, const char* glsl_version);
+    void newFrame();
+    void render();
     ImGui::FileBrowser filebrowser;
 };
 
@@ -57,29 +59,33 @@ Handle::Ptr const& Handle::get()
 void Handle::setContext(GLFWwindow* context, const char* glsl_version)
 {
     if (context == nullptr) {
-        SSS::throw_exc("Please make an OpenGL context current.");
+        SSS::throw_exc("Please forward a non-null OpenGL context.");
     }
-
-    Ptr const& handle = get();
-
-    if (context == handle->_context) return;
+    if (context == _context) return;
+    
+    GLFWwindow* previous = glfwGetCurrentContext();
+    glfwMakeContextCurrent(context);
+    
+    if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress)) {
+        SSS::throw_exc("Failed to initialize GLAD");
+    }
 
     ImGui_ImplOpenGL3_Shutdown();
     ImGui_ImplGlfw_Shutdown();
     ImGui_ImplGlfw_InitForOpenGL(context, true);
     ImGui_ImplOpenGL3_Init(glsl_version);
 
-    handle->_context = context;
+    _context = context;
+    glfwMakeContextCurrent(previous);
 }
 
 void Handle::newFrame()
 {
-    Ptr const& handle = get();
-    if (handle->_context == nullptr) {
+    if (_context == nullptr) {
         LOG_WRN("SSS/ImGuiH: Please set OpenGL context with setContext() before calling newFrame().");
         return;
     }
-    if (handle->_has_frame) {
+    if (_has_frame) {
         LOG_WRN("SSS/ImGuiH: A frame is already open.");
         return;
     }
@@ -88,7 +94,7 @@ void Handle::newFrame()
     ImGui_ImplGlfw_NewFrame();
     ImGui::NewFrame();
 
-    handle->_has_frame = true;
+    _has_frame = true;
 }
 
 void Handle::render()
@@ -108,14 +114,14 @@ void Handle::render()
 
 void setContext(GLFWwindow* context, const char* glsl_version) try
 {
-    Handle::setContext(context, glsl_version);
+    Handle::get()->setContext(context, glsl_version);
 }
 CATCH_AND_LOG_FUNC_EXC;
 
 bool newFrame()
 {
     try {
-        Handle::newFrame();
+        Handle::get()->newFrame();
         return true;
     }
     catch (std::exception const& e) {
@@ -126,7 +132,7 @@ bool newFrame()
 
 void render() try
 {
-    Handle::render();
+    Handle::get()->render();
 }
 CATCH_AND_LOG_FUNC_EXC;
 
