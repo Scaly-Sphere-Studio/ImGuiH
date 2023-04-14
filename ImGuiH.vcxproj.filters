@@ -51,10 +51,10 @@
     <ClInclude Include="integration\imgui_impl_opengl3.h">
       <Filter>integration</Filter>
     </ClInclude>
-    <ClInclude Include="inc\SSS\ImGuiH.hpp">
+    <ClInclude Include="inc\ImGuiH.hpp">
       <Filter>inc</Filter>
     </ClInclude>
-    <ClInclude Include="inc\SSS\ImGuiH\imfilebrowser.h">
+    <ClInclude Include="inc\ImGuiH\imfilebrowser.h">
       <Filter>inc</Filter>
     </ClInclude>
   </ItemGroup>

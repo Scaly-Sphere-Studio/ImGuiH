@@ -1,6 +1,6 @@
 #define USE_SSS_GL
 
-#include "SSS/ImGuiH.hpp"
+#include "ImGuiH.hpp"
 
 #ifdef USE_SSS_GL
 # include "SSS/GL.hpp"
