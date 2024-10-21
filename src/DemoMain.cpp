@@ -16,17 +16,17 @@ int main(void) try
     SSS::GL::Window::CreateArgs args;
     args.w = 1280;
     args.h = 720;
-    SSS::GL::Window::Shared window = SSS::GL::Window::create(args);
+    SSS::GL::Window& window = SSS::GL::Window::create(args);
 
     // -------->>>  Setup ImGUI  context <<<--------
-    SSS::ImGuiH::setContext(window->getGLFWwindow());
+    SSS::ImGuiH::setContext(window.getGLFWwindow());
 
     // Main loop
-    while (!window->shouldClose()) {
+    while (!window.shouldClose()) {
 
         // Poll events & set context
         SSS::GL::pollEverything();
-        SSS::GL::Context const context(window);
+        auto const context = window.setContext();
 
         // -------->>>  Display ImGUI  <<<--------
         if (SSS::ImGuiH::newFrame()) {
@@ -35,7 +35,7 @@ int main(void) try
         }
 
         // Print frame
-        window->printFrame();
+        window.printFrame();
     };
 
 #else
