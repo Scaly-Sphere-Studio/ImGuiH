@@ -49,6 +49,7 @@
     <ClInclude Include="inc\ImGuiH.hpp" />
     <ClInclude Include="integration\imgui_impl_glfw.h" />
     <ClInclude Include="integration\imgui_impl_opengl3.h" />
+    <ClInclude Include="integration\imgui_impl_opengl3_loader.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>

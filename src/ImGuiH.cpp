@@ -70,8 +70,10 @@ void Handle::setContext(GLFWwindow* context, const char* glsl_version)
         SSS::throw_exc("Failed to initialize GLAD");
     }
 
-    ImGui_ImplOpenGL3_Shutdown();
-    ImGui_ImplGlfw_Shutdown();
+    if (_context != nullptr) {
+        ImGui_ImplOpenGL3_Shutdown();
+        ImGui_ImplGlfw_Shutdown();
+    }
     ImGui_ImplGlfw_InitForOpenGL(context, true);
     ImGui_ImplOpenGL3_Init(glsl_version);
 
